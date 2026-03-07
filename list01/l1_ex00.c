@@ -2,39 +2,39 @@
    Resolucao da questao 1; lista 1 da matéria de Fundamentos de Programação Imperativa. Miquéias Santos */
 
 #include <stdio.h>
-#define uchar unsigned char //bom para constantes, alias, diretica ifdef e funções macros (possivelmente genérica)
-#define mpow(p) p * p //função macro. Não aqui, mas parênteses podem ser necessarios por precedência
-#define mabs(a) (a) > 0 ? a : -(a)
+#include <math.h>
+//#define é bom para constantes, alias, diretica ifdef e funções macros (possivelmente genérica)
+#define mpow(p) (p*p) //função macro. Não aqui, mas parênteses podem ser necessarios por precedência
+#define mabs(a) ((a) >= 0 ? (a) : -(a)) //um exagero de parentesis necessarios
 
 //justificando: optei em vez de criar 6 variaveis separadas ou um array de 6 inteiros ou 2 arrays e 3 inteiros, etc...
 struct Data{
-    uchar dia;
-    uchar mes;
-    short ano;
+    int dia;
+    int mes;
+    int ano;
 };  
 
-void evaluate(uchar a, uchar s, uchar t, uchar c);
+void evaluate(int a, int s, int t, int c);
 
 int main(void){
 
     struct Data aniversario;
     struct Data atual;
 
-    scanf("%hhu/%hhu/%hd", &aniversario.dia, &aniversario.mes, &aniversario.ano); 
-    scanf("%hhu/%hhu/%hd", &atual.dia, &atual.mes, &atual.ano);
-
-   // printf("%d %d %d %d %d %d ", aniversario.dia, aniversario.mes, aniversario.ano, atual.dia, atual.mes, atual.ano);
+    scanf("%d/%d/%d", &aniversario.dia, &aniversario.mes, &aniversario.ano); 
+    scanf("%d/%d/%d", &atual.dia, &atual.mes, &atual.ano);
     
-    uchar amor = (aniversario.dia + aniversario.mes + aniversario.ano + atual.dia + atual.mes + atual.ano) * 7 % 101;
-    uchar sorte = ((aniversario.dia + atual.dia + aniversario.mes + atual.mes) * 9 + mabs(aniversario.ano - atual.ano) ) % 101;
-    uchar trabalho = (aniversario.ano + atual.ano - (aniversario.mes + atual.mes + aniversario.dia + atual.dia)*8) % 101;
-    uchar cor = mpow(aniversario.dia) + mpow(atual.dia) + mpow(aniversario.mes) + mpow(atual.mes) + mpow(aniversario.ano) + mpow(atual.mes) % 11;
+    int amor = (aniversario.dia + aniversario.mes + aniversario.ano + atual.dia + atual.mes + atual.ano) * 7 % 101;
+    int sorte = ((aniversario.dia + atual.dia + aniversario.mes + atual.mes) * 9 + mabs(aniversario.ano - atual.ano) ) % 101;
+    int trabalho = (aniversario.ano + atual.ano - (aniversario.mes + atual.mes + aniversario.dia + atual.dia)*8) % 101;
+    int cor = (mpow(aniversario.dia) + mpow(atual.dia) + mpow(aniversario.mes) + mpow(atual.mes) + mpow(aniversario.ano) + mpow(atual.ano)) % 11;
     
     evaluate(amor, sorte, trabalho, cor);
+
     return 0;
 }
 
-void evaluate(uchar a, uchar s, uchar t, uchar c){
+void evaluate(int a, int s, int t, int c){
     printf("Amor: %d%% ", a);
     if(a < 20) printf("Pessimo dia para se apaixonar.");
     else if(a >= 20 && a <= 40) printf("Melhor manter o coracao <3 longe de perigo.");
@@ -71,5 +71,5 @@ void evaluate(uchar a, uchar s, uchar t, uchar c){
         case 9: printf("Preto."); break;
         case 10: printf("Branco."); break;
     }
-    
+
 }
