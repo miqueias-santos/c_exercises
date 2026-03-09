@@ -8,7 +8,7 @@ int main(void){
     
     scanf("%d %d %d", &N, &A, &B);
     printf("%d, %d, %d\n", N, A, B);
-    long soma = soma_pa(N, 1) - soma_pa(N, A) - soma_pa(N, B) + soma_pa(N, A*B);
+    long soma = soma_pa(N, 1) - soma_pa(N, A) - soma_pa(N, B);
     printf("%ld", soma);
 
     return 0;

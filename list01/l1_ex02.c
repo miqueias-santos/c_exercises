@@ -57,16 +57,23 @@ int main(void){
             value_z = (z*total)/100.f;
             if(value_x == (int)value_x && value_y == (int)value_y && value_z == (int)value_z){//divisão se ajeita adicionando 3
                 int soma = (int)value_x + (int)value_y + (int)value_z;
-                if((total - soma) >= 4){
+                if((total - soma) >= 4){ //ela adiciona por vale pra ela
                     int id1, id2, id3;
                     scanf("%d %d %d", &id1, &id2, &id3);
                     if(id1%3 == 0 || id2%3 == 0 || id3%3 == 0){
                         printf("%d\n", (id1/3)+(id2/3)+(id3/3));
                     }
 
-                }
-                else{
+                    if((total - soma) >= 7){//deu o total
+                        printf("Ela conseguiu! Rebeka voltou para casa e apanhou da mae por sumir noite passada!\n");
+                    }else{ //ainda assim não deu o total
+                        printf("E parece que Rebeka vai ter que voltar andando...\n");
+                    }
 
+                }
+                else{ //ela não adiciona porque não vale
+                    printf("Nao foi dessa vez que Rebeka pode ajudar...\n");
+                    printf("E parece que Rebeka vai ter que voltar andando...\n");
                 }
             }
             else{ //nem assim a divisão se ajeitou
