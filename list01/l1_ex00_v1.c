@@ -2,7 +2,6 @@
    Resolucao da questao 1; lista 1 da matéria de Fundamentos de Programação Imperativa. Miquéias Santos */
 
 #include <stdio.h>
-#include <math.h>
 
 int main(void){
     int aniversario_dia, aniversario_mes, aniversario_ano, atual_dia, atual_mes, atual_ano;
