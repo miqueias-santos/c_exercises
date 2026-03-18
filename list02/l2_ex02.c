@@ -18,9 +18,17 @@ int main(void){
     int cond;
     int w;
     for(int c = 1; c <= n_canais; c++){ //para cada canal
-       scanf("%d %d", &anterior, &atual);
+        
+        scanf("%d %d", &anterior, &atual);
+        
         
         cond = 1;
+        if(anterior == 0 && atual == 0){
+            cond = 0;
+            dif = x;
+            is_vip = 0;
+        }
+        
         w = 1;
         while (cond){
             if (w == 1) {
@@ -28,7 +36,7 @@ int main(void){
                 w++;
             }
             else if (w == 2){
-                if (dif > abs(x - atual)){
+                if (dif >= abs(x - atual)){
                     dif = abs(x - atual);
                     w++;
                 }
@@ -61,13 +69,13 @@ int main(void){
         if (dif <= dif_ant){
             melhor_canal = c;
             minuto = w;
-            is_vip = ((anterior/10) + (anterior%10)) > 10 ? 1 : 0;
+            is_vip = ((anterior/10000)+(anterior/1000)+(anterior/100)+(anterior/10) + (anterior%10)) > 10 ? 1 : 0;
             dif_ant = dif;
         }
 
     }
-    if(is_vip) printf("Xupenio, para ir ao lulupalooza vc deve entrar no canal %d e sera chamado mais ou menos no minuto %d e com o VIP garantido!!!", melhor_canal, minuto);
-    else printf("Xupenio, para ir ao lulupalooza vc deve entrar no canal %d e sera chamado mais ou menos no minuto %d, mas o ingresso VIP n�o vai rolar :(", melhor_canal, minuto);
+    if(is_vip) printf("Xupenio, para ir ao lulupalooza vc deve entrar no canal %d e sera chamado mais ou menos no minuto %d e com o VIP garantido!!!\n", melhor_canal, minuto);
+    else printf("Xupenio, para ir ao lulupalooza vc deve entrar no canal %d e sera chamado mais ou menos no minuto %d, mas o ingresso VIP não vai rolar :(\n", melhor_canal, minuto);
 
 
     return 0;
