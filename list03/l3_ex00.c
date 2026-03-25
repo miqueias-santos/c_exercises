@@ -40,8 +40,7 @@ int main(void){
         len_aux = (len_aux == 1) ? 0 : len_aux;
         printf("%d\n", len_aux);
         for(int i = end_seq; i - end_seq < len_aux ; i++){
-            if(i - end_seq == len_aux - 1) printf("%d", array[i]);
-            else rintf("%d", array[i]);
+            printf("%d ", array[i]);
             
         }
         if(j != T - 1) printf("\n");
