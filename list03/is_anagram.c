@@ -13,6 +13,7 @@ int main(void){
 
     return 0;
 }
+
 int is_anagram(char* str1, char* str2){
     int idx_analisados[MAX];
     for(int i = 0; i < MAX; i++)idx_analisados[i] = -1;
