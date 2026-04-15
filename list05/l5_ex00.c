@@ -5,7 +5,7 @@
 float mean(float *notes, int number_notes);
 float bigger(float *notes, int number_notes, int *position);
 float smaller(float *notes, int number_notes, int *position);
-int up_to_pass(float *notes, int number_notes);
+int above_mean(float *notes, int number_notes);
 float *bubble_sort(float *vector, int size);
 float median(float *notes, int number_notes);
 int count(float* vector, int size, float element);
@@ -21,10 +21,9 @@ int main()
     
     notes = malloc(n * sizeof(float));
     if (notes == NULL) {
-        printf("Alocattion have failed");
+        printf("Allocation have failed");
         return 1;
     }
-
     for (int i = 0; i < n; i++) {
         scanf("%f", notes + i);
     }
@@ -33,16 +32,16 @@ int main()
     report(notes, n);
     
     scanf("%d", &k);
-
-    aux = realloc(notes, (n + k) * sizeof(float));
-    if (aux == NULL) {
-        printf("Realocattion have failed");
-        free(notes);
-        return 1;
+    if(k != 0) {
+        aux = realloc(notes, (n + k) * sizeof(float));
+        if (aux == NULL) {
+            printf("Reallocation have failed");
+            free(notes);
+            return 1;
+        }
+        notes = aux;
     }
-    notes = aux;
-    
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < k; i++) {
         scanf("%f", notes + n + i);
     }
 
@@ -50,7 +49,6 @@ int main()
     report(notes, n + k);
 
     free(notes);
-
     return 0;
 }
 
@@ -101,11 +99,12 @@ float smaller(float *notes, int number_notes, int *position)
     return smaller;
 }
 
-int up_to_pass(float *notes, int number_notes) 
+int above_mean(float *notes, int number_notes) 
 {
+    float media = mean(notes, number_notes);
     int count = 0;
     for (int i = 0; i < number_notes; i++) {
-        if (notes[i] > 7.0f) count++;
+        if (notes[i] > media) count++;
     }
     return count;
 }
@@ -117,7 +116,7 @@ float *bubble_sort(float *vector, int size)
     float aux;
 
     if (ordenation == NULL) {
-        printf("Alocattion have failed");
+        printf("Allocation have failed");
         return NULL;
     }
 
@@ -143,7 +142,11 @@ float median(float *notes, int number_notes)
 {
     float median;
     float *vector = bubble_sort(notes, number_notes);
-    
+    if (vector == NULL) {
+        printf("Error");
+        return -1;
+    }
+
     if (number_notes & 1) { // Odd
         median = vector[number_notes / 2];
     }
@@ -168,7 +171,27 @@ int count(float* vector, int size, float element)
 
 float mode(float *notes, int number_notes)
 {
-    
+    float element;
+    int recorrency = 0;
+    int count = 0;
+    int no_mode;
+
+    for (int i = 0; i < number_notes; i++) {
+        count = 0;
+        for (int j = 0; j < number_notes; j++) {
+            if (notes[i] == notes[j]) count++;
+        }
+        if (recorrency < count) {
+            recorrency = count;
+            element = notes[i];
+            no_mode = 0;
+        }
+        else if(recorrency == count && notes[i] != element) {
+            no_mode = 1;
+        }
+    }
+    if (no_mode) element = -1;
+    return element;
 }
 
 void report(float *notes, int number_notes)
@@ -179,7 +202,7 @@ void report(float *notes, int number_notes)
     media = mean(notes, number_notes);
     maior = bigger(notes, number_notes, &pos_maior);
     menor = smaller(notes, number_notes, &pos_menor);
-    acima_da_media = up_to_pass(notes, number_notes);
+    acima_da_media = above_mean(notes, number_notes);
     mediana = median(notes, number_notes);
     moda = mode(notes, number_notes);
 
@@ -189,17 +212,6 @@ void report(float *notes, int number_notes)
     printf("Acima da media: %d\n", acima_da_media);
     printf("Mediana: %.2f\n", mediana);
     
-    if(moda == -1.0f) printf("Moda: Nao ha moda unica");
-    else printf("Moda: \n");
+    if(moda == -1.0f) printf("Moda: Nao ha moda unica\n");
+    else printf("Moda: %.2f\n", moda);
 }
-
-
-
-
-
-
-
-
-
-
-
