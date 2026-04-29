@@ -20,27 +20,44 @@ int main()
     int end = 0;
 
     // scanf(" ");
-    while (!end) {
+    while (!end) { // Recebendo a string
 
         // scanf("%4[^\n]", excerpt);
         len_excerpt = strlen(excerpt);
         
-        if (len_excerpt < STEP && count_word != N - 1) {
-            count_word++;
+        if (len_excerpt < STEP  && count_word != N - 1) {
             size++;
             capacity++;
         }
-        
-        end = (count_word == N) ? 1 : 0;
-        
+        end = (count_word == N - 1) ? 1 : 0;
         string = control_realloc(string, &capacity, size + len_excerpt, len_excerpt);
-        strcpy(string + size - 1, excerpt);        
-         
+        if(end) {
+            strcpy(string + size, excerpt);
+        }
+        else strcpy(string + size - 1, excerpt); 
         
-        size += strlen(excerpt);
-        
+        size += len_excerpt;
+        if (len_excerpt < STEP) count_word++;
     }   
     
+    len = malloc(count_word * sizeof(int));
+    len[0] = 0;
+    idx = malloc(count_word * sizeof(int));
+    int count_null = 1;
+    for(int i = 0; i < capacity; i++) {
+        if (count_word != count_null) {
+            if (string[i] == '\0'){
+                idx[count_null] = i + 1;
+            }
+        }
+        
+    }
+    
+    
+    
+
+
+
     free(string); 
     return 0;
 }
