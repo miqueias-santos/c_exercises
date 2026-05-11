@@ -20,7 +20,7 @@ int main()
     recieve(matrix, row, col);
 
     modificar(matrix, row, col);
-    maior_elemento = print_and_select(matrix, row, col, &x, &y);
+    maior_elemento = print_and_select(matrix, row, col, &x, &y); 
 
     printf("Sensor critico: %d\n", maior_elemento);
     printf("Posicao: (%d,%d)", x, y);
@@ -150,6 +150,5 @@ void modificar(int **matrix, int row, int col)
     
         scanf("%d", &num); 
     }
-
     free(fi);
 }
