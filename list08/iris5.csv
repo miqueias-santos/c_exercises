@@ -1,0 +1,13 @@
+species,sepal_length,petal_length,petal_width,sepal_width
+Iris-setosa,4.99,3.0,1.12,0.2
+Iris-virginica,5.18,3.5,1.89,74.2
+Iris-versicolor,45.020,33.22,4.17,1.4
+Iris-virginica,6.3,38.38,6.0,0.5
+
+
+[MEDIAS]
+Media de 'sepal_length': 15.37
+Media de 'sepal_width': 19.07
+Media de 'petal_length': 19.53
+Media de 'petal_width': 3.30
+[MODA: X]
