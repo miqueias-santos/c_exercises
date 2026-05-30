@@ -15,4 +15,7 @@ int main() {
    // printf("%p\n", main);
     printf("%p\n", p);
     printf("%p\n", p + 1);
+
+    FILE *f;
+    f = fopen();
 }

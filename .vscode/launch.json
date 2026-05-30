@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/miqueias/docs/c_exercises/list07",
-      "program": "/home/miqueias/docs/c_exercises/list07/build/Debug/outDebug",
+      "cwd": "/home/miqueias/docs/c_exercises/list09",
+      "program": "/home/miqueias/docs/c_exercises/list09/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
