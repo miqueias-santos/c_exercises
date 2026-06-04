@@ -1,4 +1,4 @@
-#include "queue.h"
+#include "linked_list/queue.h"
 
 int main() {
     // Queue q; Assim poderia ser, mas só para evitar passar por referência

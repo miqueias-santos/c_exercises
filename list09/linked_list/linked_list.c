@@ -105,7 +105,7 @@ int RemoveAtEnd(Node *HEAD) {
     for (Node *node = HEAD; node != NULL; node = node->next)
 }
 */
-int Replace(Node *HEAD, int index, int value) { // ?
+int Replace(Node *HEAD, int index, int value) { // Possivelmente não funcional
     Node *node = HEAD;
     int i = 0;
 
